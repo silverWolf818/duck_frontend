@@ -1,0 +1,10 @@
+const INIT = 'INIT'
+const SET_FORM = 'SET_FORM'
+const INITMENU = 'INITMENU'
+const USERINFO = 'USERINFO'
+export {
+  SET_FORM,
+  INIT,
+  INITMENU,
+  USERINFO
+}

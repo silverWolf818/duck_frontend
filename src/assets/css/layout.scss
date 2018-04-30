@@ -1,0 +1,62 @@
+$width120:120px;
+.layout-form{
+  background: #fff;
+  padding: 25px 15px 15px 15px;
+  min-height: 400px;
+}
+.tips{
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #d7dde5;
+  div{
+    margin-top: 5px;
+    font-size: 14px;
+  }
+}
+.layout-queryPanel{
+  background: #fff;
+  padding: 20px;
+}
+.layout-queryPanel{
+  .ivu-form-item,
+  .ivu-date-picker{
+    width: 100%;
+  }
+  .ivu-form-item-label{
+    width: 120px;
+  }
+  .ivu-form-item-content{
+    margin-left: 120px;
+  }
+}
+//列表搜索，重置按钮
+.query-btns{
+  .ivu-col{
+    padding-left: 50px !important;
+  }
+  .ivu-btn{
+    margin-left: 8px;
+  }
+  .ivu-btn-text:focus{
+    box-shadow:none;
+  }
+}
+//操作按钮
+.op-btns{
+  margin-top: 20px;
+  .ivu-col{
+    text-align: right;
+  }
+  .ivu-btn{
+    margin-left: 8px;
+  }
+}
+.layout-tabQuery{
+  .ivu-tabs-bar{
+    background: #fff;
+    margin-bottom: 0;
+  }
+}
+.tip-title{
+  margin-bottom: 10px;
+}
