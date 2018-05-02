@@ -79,7 +79,6 @@
       collapsedSider () {
         this.$refs.side.toggleCollapse();
         this.$nextTick(()=> {
-          this.$refs.menu.updateOpened();
           this.$refs.menu.updateActiveName();
         });
       },

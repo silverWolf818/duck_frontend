@@ -10,7 +10,6 @@ import lodash from 'lodash'
 import moment from 'moment'
 import 'iview/dist/styles/iview.css'
 import './assets/css/layout.scss'
-import './mock/mocks'
 import plugin from './plugin'
 
 Vue.config.productionTip = false

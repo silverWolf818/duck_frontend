@@ -182,71 +182,86 @@ Mock.mock('menus', 'post', {
   "respDesc": "success",
   "data": [
     {
-      "respDesc":"success",
-      "data":{
-      "userName":"周大侠",
-      "userIcon":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524760673136&di=3b75c08b91e70155a19775050473c868&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa5c27d1ed21b0ef45f4d2b59d7c451da81cb3e0b.jpg"
-      }
-      ,
-      "respCode":"0000"
-    },
-    {
+      "autoId":"",
+      "parentId":1,
       "menuName": "表单页",
       "menuIcon":"compose",
       "menuCode": "form",
       "menuUrl": "",
       "subMenus": [
         {
+          "autoId": 101,
+          "parentId": 1,
           "menuName": "基础表单",
           "menuCode": "baseForm",
           "menuUrl": "/baseForm"
         },{
+          "autoId": 102,
+          "parentId": 1,
           "menuName": "高级表单",
           "menuCode": "advForm",
           "menuUrl": "/advForm"
         }]
     }, {
+      "autoId":"",
+      "parentId":2,
       "menuName": "列表页",
       "menuIcon":"ios-grid-view",
       "menuCode": "list",
       "menuUrl": "",
       "subMenus": [
         {
+          "autoId":201,
+          "parentId":2,
           "menuName": "查询表格",
           "menuCode": "baseQuery",
           "menuUrl": "/baseQuery"
         },{
+          "autoId":202,
+          "parentId":2,
           "menuName": "选项卡表格",
           "menuCode": "tabQuery",
           "menuUrl": "/tabQuery"
         }]
     }, {
+      "autoId":"",
+      "parentId":3,
       "menuName": "详情页",
       "menuIcon":"ios-list-outline",
       "menuCode": "detail",
       "menuUrl": "",
       "subMenus": [
         {
+          "autoId":301,
+          "parentId":3,
           "menuName": "基础详情页",
           "menuCode": "baseDetail",
           "menuUrl": "/baseDetail"
         },{
+          "autoId":302,
+          "parentId":3,
           "menuName": "高级详情页",
           "menuCode": "advDetail",
           "menuUrl": "/advDetail"
         }]
     }, {
+      "autoId":"",
+      "parentId":4,
       "menuName": "结果页",
       "menuIcon":"ios-checkmark-outline",
       "menuCode": "result",
       "menuUrl": "",
       "subMenus": [
         {
+          "autoId":401,
+          "parentId":4,
           "menuName": "成功",
           "menuCode": "success",
           "menuUrl": "/success"
         },
         {
+          "autoId":402,
+          "parentId":4,
           "menuName": "失败",
           "menuCode": "fail",
           "menuUrl": "/fail"
