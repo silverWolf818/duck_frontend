@@ -83,7 +83,7 @@
           this.$refs.menu.updateActiveName();
         });
       },
-      change (data) {
+      change(data) {
         sessionStorage.setItem('openNames',data);
       },
       select(data) {

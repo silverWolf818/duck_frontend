@@ -1,6 +1,6 @@
 <template>
     <div class="layout-avator">
-      <Tooltip placement="top">
+      <Tooltip placement="bottom">
         <span class="avator-image"><img :src="userIcon" alt=""></span><span>{{ userName }}</span>
         <div class="avator-info" slot="content">
           <p>个人中心</p>
