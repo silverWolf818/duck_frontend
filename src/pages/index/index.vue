@@ -4,14 +4,22 @@
       <div class="layout-logo">
         <p class="logo-title">Vue admin</p>
       </div>
-      <Menu theme="dark" width="auto" :class="menuitemClasses" :accordion="true" @on-select="select" @on-open-change="changed">
-        <Submenu v-for="(sub,index) in getMenu" :name="sub.menuCode" :key="sub.menuCode">
+      <Menu
+            theme="dark" width="auto"
+            ref="menu"
+            :active-name="getActiveName"
+            :open-names="[getOpenNames]"
+            :class="menuitemClasses"
+            :accordion="true"
+            @on-select="select"
+            @on-open-change="change">
+        <Submenu v-for="sub in getMenu" :name="sub.menuCode" :key="sub.menuCode">
           <template slot="title">
             <Icon :type="sub.menuIcon"></Icon>
             <span v-if="!isCollapsed">{{ sub.menuName }}</span>
           </template>
           <div v-if="!isCollapsed">
-            <MenuItem v-for="(item,index) in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
+            <MenuItem v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
               {{ item.menuName }}
             </MenuItem>
           </div>
@@ -21,7 +29,7 @@
     <Layout>
       <Header :style="{padding: 0}" class="layout-header-bar">
         <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
-        <Avator></Avator>
+        <Avator v-bind="getUser"></Avator>
       </Header>
       <Content style="margin: 24px 24px 0;">
         <router-view />
@@ -40,12 +48,15 @@
     },
     data () {
       return {
-        isCollapsed: false
+        isCollapsed: false,
       }
     },
     computed: {
       ...mapGetters([
-        'getMenu'
+        'getMenu',
+        'getOpenNames',
+        'getActiveName',
+        'getUser'
       ]),
       rotateIcon () {
         return [
@@ -67,22 +78,23 @@
       ]),
       collapsedSider () {
         this.$refs.side.toggleCollapse();
+        this.$nextTick(()=> {
+          this.$refs.menu.updateOpened();
+          this.$refs.menu.updateActiveName();
+        });
+      },
+      change (data) {
+        sessionStorage.setItem('openNames',data);
       },
       select(data) {
+        sessionStorage.setItem('activeName',data);
         this.$router.push({
           name:data
         });
-      },
-      changed() {
-        if(this.isCollapsed){
-
-        }else{
-
-        }
       }
     },
     created() {
-      this.initMenu();
+      this.initMenu(this);
       this.userInfo();
     }
   }

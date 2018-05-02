@@ -40,12 +40,6 @@ export async function updateApi(url,params,mock) {
 }
 
 //自定义请求接口
-
-//请求菜单
-export async function queryMenu(params) {
-  return request('menu');
-}
-
 export async function menu(params,mock) {
   return request('menu',{
     mock:mock ? mock : false,

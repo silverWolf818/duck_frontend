@@ -1,12 +1,35 @@
 <template>
     <div class="layout-avator">
-      <span class="avator-image"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525355644&di=af848d73ee0590eff35767914acc3db5&imgtype=jpg&er=1&src=http%3A%2F%2Fupload.chinapet.com%2Fforum%2F201412%2F20%2F234122jgrvuker37ekxtuu.jpg" alt=""></span><span>周大侠</span>
+      <Tooltip placement="top">
+        <span class="avator-image"><img :src="userIcon" alt=""></span><span>{{ userName }}</span>
+        <div class="avator-info" slot="content">
+          <p>个人中心</p>
+          <p @click="logout">退出登录</p>
+        </div>
+      </Tooltip>
     </div>
 </template>
 
 <script>
     export default {
-
+      props:{
+        userIcon:{
+          type: String,
+          default :''
+        },
+        userName:{
+          type: String,
+          default :''
+        }
+      },
+      methods: {
+        logout() {
+          sessionStorage.clear();
+          this.$router.push({
+            name:'login'
+          });
+        }
+      }
     }
 </script>
 
@@ -38,5 +61,13 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+.avator-info{
+  width: 80px;
+}
+.avator-info p{
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
 }
 </style>
