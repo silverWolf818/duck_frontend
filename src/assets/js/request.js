@@ -13,7 +13,7 @@ const mockUrl = 'http://yapi.demo.qunar.com/mock/6440/';
 
 //http请求地址配置
 const config = {
-  type:'test',
+  type:ENV_TYPE,
   serverUrl () {
     switch (this.type) {
       case 'build':
