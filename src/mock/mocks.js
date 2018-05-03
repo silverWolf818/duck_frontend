@@ -182,8 +182,8 @@ Mock.mock('menus', 'post', {
   "respDesc": "success",
   "data": [
     {
-      "autoId":"",
-      "parentId":1,
+      "autoId":1,
+      "parentId":"",
       "menuName": "表单页",
       "menuIcon":"compose",
       "menuCode": "form",
@@ -203,8 +203,8 @@ Mock.mock('menus', 'post', {
           "menuUrl": "/advForm"
         }]
     }, {
-      "autoId":"",
-      "parentId":2,
+      "autoId":2,
+      "parentId":"",
       "menuName": "列表页",
       "menuIcon":"ios-grid-view",
       "menuCode": "list",
@@ -224,8 +224,8 @@ Mock.mock('menus', 'post', {
           "menuUrl": "/tabQuery"
         }]
     }, {
-      "autoId":"",
-      "parentId":3,
+      "autoId":3,
+      "parentId":"",
       "menuName": "详情页",
       "menuIcon":"ios-list-outline",
       "menuCode": "detail",
@@ -245,8 +245,8 @@ Mock.mock('menus', 'post', {
           "menuUrl": "/advDetail"
         }]
     }, {
-      "autoId":"",
-      "parentId":4,
+      "autoId":4,
+      "parentId":"",
       "menuName": "结果页",
       "menuIcon":"ios-checkmark-outline",
       "menuCode": "result",

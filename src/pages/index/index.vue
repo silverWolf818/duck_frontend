@@ -29,9 +29,10 @@
     <Layout>
       <Header :style="{padding: 0}" class="layout-header-bar">
         <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
+        <Crumbs :step="getCrumb"></Crumbs>
         <Avator v-bind="getUser"></Avator>
       </Header>
-      <Content style="margin: 24px 24px 0;">
+      <Content style="overflow-x: hidden; height: 100%;padding: 24px 24px 0px">
         <router-view />
       </Content>
     </Layout>
@@ -41,10 +42,12 @@
 <script>
   import './index.scss'
   import Avator from '../../components/avator'
+  import Crumbs from '../../components/crumbs'
   import { mapGetters,mapActions } from 'vuex'
   export default {
     components:{
-      Avator
+      Avator,
+      Crumbs
     },
     data () {
       return {
@@ -56,7 +59,8 @@
         'getMenu',
         'getOpenNames',
         'getActiveName',
-        'getUser'
+        'getUser',
+        'getCrumb'
       ]),
       rotateIcon () {
         return [
@@ -74,6 +78,7 @@
     methods: {
       ...mapActions([
         'initMenu',
+        'crumbInfo',
         'userInfo'
       ]),
       collapsedSider () {
@@ -86,6 +91,7 @@
         sessionStorage.setItem('openNames',data);
       },
       select(data) {
+        this.crumbInfo(data);
         sessionStorage.setItem('activeName',data);
         this.$router.push({
           name:data
@@ -100,5 +106,10 @@
 </script>
 
 <style scoped>
-
+  .layout-crumb {
+    position: absolute;
+    top: 0;
+    margin-left: 80px;
+    font-size: 14px;
+  }
 </style>
