@@ -20,8 +20,6 @@ const config = {
         return location.origin;
       case 'dev'://开发
         return 'http://39.107.101.54:8080';
-      case 'test'://测试
-        return 'http://www.neepp.net';
     }
   },
   api (param) {
