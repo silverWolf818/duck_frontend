@@ -7,7 +7,7 @@ export async function queryApi(url,params,mock) {
   return request(url,{
     mock:mock ? mock : false,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -16,7 +16,7 @@ export async function addApi(url,params,mock) {
   return request(url,{
     mock:mock ? mock : false,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -25,7 +25,7 @@ export async function removeApi(url,params,mock) {
   return request(url,{
     mock:mock ? mock : false,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -34,26 +34,26 @@ export async function updateApi(url,params,mock) {
   return request(url,{
     mock:mock ? mock : false,
     body:{
-      ...params
+      data:params
     }
   });
 }
 
 //自定义请求接口
-export async function menu(params,mock) {
+export async function menu(params) {
   return request('menu',{
-    mock:mock ? mock : false,
+    mock:true,
     body:{
-      ...params
+      data:params
     }
   });
 }
 
-export async function user(params,mock) {
+export async function user(params) {
   return request('user',{
-    mock:mock ? mock : false,
+    mock:true,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -63,15 +63,8 @@ export async function queryTest(params) {
   return request('test',{
     mock:true,
     body:{
-      ...params
+      data:params
     }
   });
 }
-export async function queryPerms(params) {
-  return request('havePerms',{
-    body:{
-      method:'GET',
-      ...params
-    }
-  });
-}
+

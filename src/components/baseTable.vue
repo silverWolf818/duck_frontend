@@ -80,7 +80,7 @@
           query(arg){
             let param = _.assign(this.props_query,arg || {});
             this.queryParam && _.assign(param,this.queryParam(param));
-            queryApi(this.url,{ data:param },this.mock).then((res) => {
+            queryApi(this.url,param,this.mock).then((res) => {
               this.loading = false;
               this.props_data = res.rows;
               this.props_pageNo = res.pageNo;

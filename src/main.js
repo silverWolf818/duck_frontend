@@ -19,6 +19,14 @@ Vue.use(plugin)
 Vue.use(iView)
 Vue.use(iviewArea)
 
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start();
+  next();
+});
+
+router.afterEach(route => {
+  iView.LoadingBar.finish();
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
