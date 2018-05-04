@@ -46,7 +46,7 @@
         this.$refs[name].validate((valid) => {
           if (valid) {
             this.$router.push({
-              name:'baseForm'
+              name:'home'
             });
           } else {
             this.$Message.error('失败!');

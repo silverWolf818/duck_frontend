@@ -194,13 +194,15 @@ Mock.mock('menus', 'post', {
           "parentId": 1,
           "menuName": "基础表单",
           "menuCode": "baseForm",
-          "menuUrl": "/baseForm"
+          "menuUrl": "/baseForm",
+          "subMenus":[]
         },{
           "autoId": 102,
           "parentId": 1,
           "menuName": "高级表单",
           "menuCode": "advForm",
-          "menuUrl": "/advForm"
+          "menuUrl": "/advForm",
+          "subMenus":[]
         }]
     }, {
       "autoId":2,
@@ -215,13 +217,15 @@ Mock.mock('menus', 'post', {
           "parentId":2,
           "menuName": "查询表格",
           "menuCode": "baseQuery",
-          "menuUrl": "/baseQuery"
+          "menuUrl": "/baseQuery",
+          "subMenus":[]
         },{
           "autoId":202,
           "parentId":2,
           "menuName": "选项卡表格",
           "menuCode": "tabQuery",
-          "menuUrl": "/tabQuery"
+          "menuUrl": "/tabQuery",
+          "subMenus":[]
         }]
     }, {
       "autoId":3,
@@ -236,13 +240,15 @@ Mock.mock('menus', 'post', {
           "parentId":3,
           "menuName": "基础详情页",
           "menuCode": "baseDetail",
-          "menuUrl": "/baseDetail"
+          "menuUrl": "/baseDetail",
+          "subMenus":[]
         },{
           "autoId":302,
           "parentId":3,
           "menuName": "高级详情页",
           "menuCode": "advDetail",
-          "menuUrl": "/advDetail"
+          "menuUrl": "/advDetail",
+          "subMenus":[]
         }]
     }, {
       "autoId":4,
@@ -257,14 +263,16 @@ Mock.mock('menus', 'post', {
           "parentId":4,
           "menuName": "成功",
           "menuCode": "success",
-          "menuUrl": "/success"
+          "menuUrl": "/success",
+          "subMenus":[]
         },
         {
           "autoId":402,
           "parentId":4,
           "menuName": "失败",
           "menuCode": "fail",
-          "menuUrl": "/fail"
+          "menuUrl": "/fail",
+          "subMenus":[]
         }]
     }],
   "respCode": "0000"

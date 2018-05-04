@@ -11,8 +11,7 @@
             :open-names="[getOpenNames]"
             :class="menuitemClasses"
             :accordion="true"
-            @on-select="select"
-            @on-open-change="change">
+            @on-select="select">
         <Submenu v-for="sub in getMenu" :name="sub.menuCode" :key="sub.menuCode">
           <template slot="title">
             <Icon :type="sub.menuIcon"></Icon>
@@ -32,7 +31,8 @@
         <Crumbs :step="getCrumb"></Crumbs>
         <Avator v-bind="getUser"></Avator>
       </Header>
-      <Content style="overflow-x: hidden; height: 100%;padding: 24px 24px 0px">
+      <Tags v-bind="getTags" @linkTo="linkTo"></Tags>
+      <Content style="overflow-x: hidden; height: 100%;padding: 14px 24px 0">
         <router-view />
       </Content>
     </Layout>
@@ -43,11 +43,13 @@
   import './index.scss'
   import Avator from '../../components/avator'
   import Crumbs from '../../components/crumbs'
+  import Tags from '../../components/tags'
   import { mapGetters,mapActions } from 'vuex'
   export default {
     components:{
       Avator,
-      Crumbs
+      Crumbs,
+      Tags
     },
     data () {
       return {
@@ -60,7 +62,8 @@
         'getOpenNames',
         'getActiveName',
         'getUser',
-        'getCrumb'
+        'getCrumb',
+        'getTags'
       ]),
       rotateIcon () {
         return [
@@ -81,18 +84,22 @@
         'crumbInfo',
         'userInfo'
       ]),
+      linkTo(data){
+        this.select(data);
+      },
       collapsedSider () {
         this.$refs.side.toggleCollapse();
         this.$nextTick(()=> {
           this.$refs.menu.updateActiveName();
         });
       },
-      change(data) {
-        sessionStorage.setItem('openNames',data);
-      },
       select(data) {
         this.crumbInfo(data);
-        sessionStorage.setItem('activeName',data);
+        if(data === 'home'){
+          sessionStorage.setItem('activeName','home');
+        }else{
+          sessionStorage.setItem('activeName',data);
+        }
         this.$router.push({
           name:data
         });
@@ -101,6 +108,14 @@
     created() {
       this.initMenu(this);
       this.userInfo();
+    },
+    updated(){
+      this.$nextTick(() => {
+        if (this.$refs.menu) {
+          this.$refs.menu.updateOpened();
+          this.$refs.menu.updateActiveName();
+        }
+      });
     }
   }
 </script>

@@ -1,4 +1,4 @@
-import { INITMENU,USERINFO,CRUMBINFO } from '../mutation-types'
+import { INITMENU,USERINFO,CRUMBINFO,RESET_START } from '../mutation-types'
 import { menu,user } from  '../../service/api'
 // initial state
 const state = {
@@ -6,52 +6,60 @@ const state = {
   user:{},
   openNames:'',
   activeName:'',
-  active:'',
+  tags:{
+    list:[{
+      menuCode: "home",
+      menuName: "首页"
+    }],
+    active:''
+  },
+  activeInfo:{},
   step:[{
-    name:'我的首页'
+    name:'首页'
   },{
     name:''
   },{
     name:''
-  }]
+  }],
+  temp:''
 };
 
 // getters
 const getters = {
-  getOpenNames:state => state.openNames,
-  getActiveName: state => state.activeName,
-  getMenu:state => state.menu,
-  getUser:state => state.user,
-  getCrumb:state => {
-    if(state.menu.length > 0){
-      let pid = '';
-      state.menu.forEach(value => {
-        let a = value.subMenus.filter(item => item.menuCode === state.activeName);
-        if(a.length === 1){
-          pid = a[0].parentId;
-          state.step[2].name = a[0].menuName;
-        }
-      });
-      state.step[1].name = state.menu.filter(item => item.autoId === pid)[0].menuName;
-      return state.step;
-    }
-  }
-};
+    getOpenNames: state => state.openNames,
+    getActiveName: state => state.activeName,
+    getMenu: state => state.menu,
+    getUser: state => state.user,
+    getCrumb: state => state.step,
+    getTags: state => state.tags
+}
+;
 
 // mutations
 const mutations = {
   [INITMENU](state,payload){
-    let openNames = sessionStorage.getItem('openNames');
     let activeName = sessionStorage.getItem('activeName');
     state.menu = payload;
-    state.openNames = openNames ? openNames : payload[0].menuCode;
-    state.activeName = activeName ? activeName : payload[0].subMenus[0].menuCode;
+    state.activeName = activeName ? activeName : 'home';
+    if(state.activeName === 'home'){
+      changeMenu('home');
+    }else{
+      changeMenu();
+    }
+  },
+  [CRUMBINFO](state,payload){
+    state.activeName = payload;
+    if(payload === 'home'){
+      changeMenu('home');
+    }else{
+      changeMenu();
+    }
   },
   [USERINFO](state,payload){
     state.user = payload;
   },
-  [CRUMBINFO](state,payload){
-    state.activeName = payload;
+  [RESET_START](state){
+
   }
 };
 
@@ -73,8 +81,43 @@ const actions = {
     user().then(res => {
       commit(USERINFO ,res);
     });
+  },
+  resetStart({ commit }){
+    commit(RESET_START);
   }
 };
+
+function changeMenu(type){
+  if(type){//home默认加载
+    state.openNames = type;
+    state.tags.active = type;
+    state.step[1].name = state.step[2].name = '';
+  }else{
+    queryCode(state.menu,'menuCode',state.activeName);//查询当前菜单信息
+    state.activeInfo = state.temp;
+    state.tags.active = state.activeInfo.menuCode;//标签当前激活状态code
+    state.step[2].name = state.temp.menuName;//面包屑三级
+    queryCode(state.menu,'autoId',state.temp.parentId);//查询当前父级节点菜单信息
+    state.step[1].name = state.temp.menuName;//面包屑二级
+    state.openNames = state.temp.menuCode;//当前展开的菜单
+    state.tags.list.push(state.activeInfo);//一次追加标签
+    state.tags.list = _.uniqBy(state.tags.list, 'menuCode');//标签去重
+  }
+}
+
+function queryCode(menu,code,active){
+  menu.forEach(item => {
+    if(item[code] === active){
+      state.temp = item;
+      return item;
+    }else if(item.subMenus.length > 0){
+      queryCode(item.subMenus,code,active);
+    }
+  });
+}
+
+
+
 
 export default {
   state,

@@ -11,26 +11,31 @@
 </template>
 
 <script>
-    export default {
-      props:{
-        userIcon:{
-          type: String,
-          default :''
-        },
-        userName:{
-          type: String,
-          default :''
-        }
-      },
-      methods: {
-        logout() {
-          sessionStorage.clear();
-          this.$router.push({
-            name:'login'
-          });
-        }
-      }
+import { mapActions } from "vuex"
+export default {
+  props:{
+    userIcon:{
+      type: String,
+      default :''
+    },
+    userName:{
+      type: String,
+      default :''
     }
+  },
+  methods: {
+    ...mapActions([
+      'resetStart'
+    ]),
+    logout() {
+      this.resetStart();
+      sessionStorage.clear();
+      this.$router.push({
+        name:'login'
+      });
+    }
+  }
+}
 </script>
 
 <style scoped>

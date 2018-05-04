@@ -1,4 +1,5 @@
 const Index =()=>import('./index')
+const Home =()=>import('../home/home')
 const Baseform =()=>import('../../template/baseForm')
 const Advform =()=>import('../../template/advForm')
 const Basequery =()=>import('../../template/baseQuery')
@@ -18,6 +19,10 @@ export default {
   name:'index',
   component:Index,
   children:[{
+    path: 'home',
+    name: 'home',
+    component: Home
+  },{
     path: 'baseForm',
     name: 'baseForm',
     component: Baseform
