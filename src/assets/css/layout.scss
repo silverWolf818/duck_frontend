@@ -1,7 +1,19 @@
 html,body{
   height: 100%;
 }
-$width120:120px;
+.u-flex{
+  display: flex;
+}
+.flex-middle{
+  align-items: center;
+}
+.flex-center {
+  justify-content: center;
+}
+.row-flex {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .layout-form{
   background: #fff;
   padding: 25px 15px 15px 15px;

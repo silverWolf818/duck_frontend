@@ -35,8 +35,5 @@
   }
 </script>
 <style scoped lang="scss">
-  @import '~@/assets/css/test.scss';
-  .box{
-    width: $width120;
-  }
+
 </style>
