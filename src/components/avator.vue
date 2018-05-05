@@ -3,15 +3,14 @@
       <Tooltip placement="bottom">
         <span class="avator-image"><img :src="userIcon" alt=""></span><span>{{ userName }}</span>
         <div class="avator-info" slot="content">
-          <p>个人中心</p>
-          <p @click="logout">退出登录</p>
+          <a>个人中心</a>
+          <a @click="logout">退出登录</a>
         </div>
       </Tooltip>
     </div>
 </template>
 
 <script>
-import { mapActions } from "vuex"
 export default {
   props:{
     userIcon:{
@@ -24,11 +23,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'resetStart'
-    ]),
     logout() {
-      this.resetStart();
       sessionStorage.clear();
       this.$router.push({
         name:'login'
@@ -70,9 +65,15 @@ export default {
 .avator-info{
   width: 80px;
 }
-.avator-info p{
+.avator-info a{
+  color: rgba(255,255,255,.7);
+  display: block;
   height: 30px;
   line-height: 30px;
   text-align: center;
+  transition: all .2s ease-in-out;
+}
+.avator-info a:hover{
+  color: rgba(255,255,255,1);
 }
 </style>

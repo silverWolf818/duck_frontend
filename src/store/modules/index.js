@@ -1,4 +1,4 @@
-import { INITMENU,USERINFO,CRUMBINFO,RESET_START } from '../mutation-types'
+import { INITMENU,USERINFO,CRUMBINFO,CHANGETAG } from '../mutation-types'
 import { menu,user } from  '../../service/api'
 // initial state
 const state = {
@@ -41,25 +41,17 @@ const mutations = {
     let activeName = sessionStorage.getItem('activeName');
     state.menu = payload;
     state.activeName = activeName ? activeName : 'home';
-    if(state.activeName === 'home'){
-      changeMenu('home');
-    }else{
-      changeMenu();
-    }
+    state.activeName === 'home' ? changeMenu('home') : changeMenu();
   },
   [CRUMBINFO](state,payload){
     state.activeName = payload;
-    if(payload === 'home'){
-      changeMenu('home');
-    }else{
-      changeMenu();
-    }
+    payload === 'home' ? changeMenu('home') : changeMenu();
   },
   [USERINFO](state,payload){
     state.user = payload;
   },
-  [RESET_START](state){
-
+  [CHANGETAG](state,payload){
+    state.tags.list = state.tags.list.filter(item => item.menuCode !== payload);
   }
 };
 
@@ -77,13 +69,13 @@ const actions = {
   crumbInfo( { commit } ,payload) {
     commit(CRUMBINFO ,payload);
   },
+  changeTag({ commit } ,payload){
+    commit(CHANGETAG ,payload);
+  },
   userInfo( { commit } ){
     user().then(res => {
       commit(USERINFO ,res);
     });
-  },
-  resetStart({ commit }){
-    commit(RESET_START);
   }
 };
 
