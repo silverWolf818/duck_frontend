@@ -121,10 +121,5 @@
 </script>
 
 <style scoped>
-  .layout-crumb {
-    position: absolute;
-    top: 0;
-    margin-left: 80px;
-    font-size: 14px;
-  }
+
 </style>
