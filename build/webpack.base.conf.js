@@ -19,9 +19,11 @@ module.exports = {
     'vue':'Vue',
     'vue-router':'VueRouter',
     'vuex': 'Vuex',
+    'iview': 'iview',
     'axios': 'axios',
     'lodash': '_',
-    'moment': 'moment'
+    'moment': 'moment',
+    'echarts': 'echarts'
   },
   output: {
     path: config.build.assetsRoot,
