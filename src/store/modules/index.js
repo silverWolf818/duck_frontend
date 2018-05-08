@@ -1,7 +1,7 @@
-import { INITMENU,USERINFO,CRUMBINFO,CHANGETAG } from '../mutation-types'
+import { INITMENU,USERINFO,CRUMBINFO,CHANGETAG,RESET_START } from '../mutation-types'
 import { menu,user } from  '../../service/api'
 // initial state
-const state = {
+const initState = {
   menu:[],
   user:{},
   openNames:'',
@@ -22,7 +22,8 @@ const state = {
     name:''
   }],
   temp:''
-};
+}
+const state = JSON.parse(JSON.stringify(initState));
 
 // getters
 const getters = {
@@ -52,6 +53,9 @@ const mutations = {
   },
   [CHANGETAG](state,payload){
     state.tags.list = state.tags.list.filter(item => item.menuCode !== payload);
+  },
+  [RESET_START](state){
+    Object.assign(state,JSON.parse(JSON.stringify(initState)));
   }
 };
 
@@ -76,6 +80,9 @@ const actions = {
     user().then(res => {
       commit(USERINFO ,res);
     });
+  },
+  resetStates:function (context, payLoad) {
+    context.commit(RESET_START, payLoad);
   }
 };
 
@@ -107,9 +114,6 @@ function queryCode(menu,code,active){
     }
   });
 }
-
-
-
 
 export default {
   state,

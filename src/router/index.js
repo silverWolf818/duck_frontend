@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+const Login =()=>import('../pages/login/login')
 Vue.use(Router)
 
 function importRoutes(r) {
@@ -13,10 +14,12 @@ export default  new Router({
     ...[
       {
         path: '*',
-        redirect: '/',
+        redirect: '/'
       },
       {
         path: '/',
+        name:'login',
+        component:Login
       }],
     ...children
   ]

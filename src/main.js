@@ -21,7 +21,11 @@ Vue.use(iView)
 
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();
-  next();
+  if (to.matched.length === 0) {
+    next('/');
+  } else {
+    next();
+  }
 });
 
 router.afterEach(route => {

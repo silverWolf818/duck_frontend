@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import {mapState, mapActions} from "vuex"
 export default {
   props:{
     userIcon:{
@@ -23,7 +24,11 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'resetStates'
+    ]),
     logout() {
+      this.resetStates();
       sessionStorage.clear();
       this.$router.push({
         name:'login'
