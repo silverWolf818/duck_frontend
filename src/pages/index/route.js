@@ -1,5 +1,6 @@
 const Index =()=>import('./index')
 const Home =()=>import('../home/home')
+const DangerousGoods =()=>import('../dangerousGoods/dangerousGoods')
 const Baseform =()=>import('../../template/baseForm')
 const Advform =()=>import('../../template/advForm')
 const Basequery =()=>import('../../template/baseQuery')
@@ -22,6 +23,10 @@ export default {
     path: 'home',
     name: 'home',
     component: Home
+  },{
+    path: 'dangerousGoods',
+    name: 'dangerousGoods',
+    component: DangerousGoods
   },{
     path: 'baseForm',
     name: 'baseForm',

@@ -1,6 +1,6 @@
 <template>
   <Layout style="height: 100%">
-    <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :width="256">
+    <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :width="200">
       <div class="layout-logo">
         <p class="logo-title">Vue admin</p>
       </div>

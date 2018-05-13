@@ -226,6 +226,13 @@ Mock.mock('menus', 'post', {
           "menuCode": "tabQuery",
           "menuUrl": "/tabQuery",
           "subMenus":[]
+        },{
+          "autoId":203,
+          "parentId":2,
+          "menuName": "危险货物统计报表",
+          "menuCode": "dangerousGoods",
+          "menuUrl": "/dangerousGoods",
+          "subMenus":[]
         }]
     }, {
       "autoId":3,

@@ -48,11 +48,11 @@
         </Row>
       </Form>
       <Row :gutter="8" class="op-btns">
-        <Col span="8" offset="16">
-        <Button type="primary"><Icon type="plus"></Icon> 新增</Button>
-        <Button type="primary" @click="modify"><Icon type="edit"></Icon> 修改</Button>
-        <Button type="primary"><Icon type="trash-a"></Icon> 删除</Button>
-        </Col>
+       <div class="operate-btn mt10">
+         <Button type="primary"><Icon type="plus"></Icon> 新增</Button>
+         <Button type="primary" @click="modify"><Icon type="edit"></Icon> 修改</Button>
+         <Button type="primary"><Icon type="trash-a"></Icon> 删除</Button>
+       </div>
       </Row>
       <BaseTable @selectionChange="selectionChange" v-bind="table" ref="basetable"></BaseTable>
   </div>
