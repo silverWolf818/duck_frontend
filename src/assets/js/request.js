@@ -9,7 +9,7 @@ import qs from 'qs'
 import { Modal } from 'iview'
 
 //mock地址
-const mockUrl = 'http://yapi.demo.qunar.com/mock/6440/';
+const mockUrl = 'http://ued.tydicdev.com:3000/mock/11/';
 
 //http请求地址配置
 const config = {
@@ -65,19 +65,19 @@ axios.interceptors.response.use(function (res) {
       console.log("401");
       break;
     case 200:
-      let data = res.data;
-      if (data.respCode === '0000') {
-        result = data.data;
-      }else{
-        Modal.error({
-          title: '错误',
-          content: data.respDesc ? data.respDesc :'网络繁忙！'
-        });
-      }
+      // let data = res.data;
+      // if (data.respCode === '0000') {
+      //   result = data.data;
+      // }else{
+      //   Modal.error({
+      //     title: '错误',
+      //     content: data.respDesc ? data.respDesc :'网络繁忙！'
+      //   });
+      // }
       break;
   }
   //在这里对返回的数据进行处理
-  return result;
+  return res.data;
 }, function (error) {
   return Promise.reject(error);
 });
@@ -86,7 +86,11 @@ export default function request(url,option) {
   const httpUrl = option.mock ? mockUrl + url : config.api(url);
   let reqUrl = '';
   if(option.body.method === 'GET'){
-    reqUrl = httpUrl + '?' + (option.body.data ? qs.stringify(option.body.data) :'');
+    if(option.body.data){
+      reqUrl = httpUrl + '?' + qs.stringify(option.body.data);
+    }else{
+      reqUrl = httpUrl
+    }
   }else{
     reqUrl = httpUrl;
   }

@@ -40,6 +40,16 @@ export async function updateApi(url,params,mock) {
 }
 
 //自定义请求接口
+
+//用户登录
+export async function auth(params) {
+  return request('auth',{
+    mock:true,
+    body:{
+      data:params
+    }
+  });
+}
 export async function menu(params) {
   return request('menu',{
     mock:true,

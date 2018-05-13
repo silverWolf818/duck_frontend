@@ -1,6 +1,20 @@
+@import "variable";
 html,body{
   height: 100%;
 }
+/* text-align */
+.tc{text-align:center;}
+.tr{text-align:right;}
+.tl{text-align:left;}
+.tj{text-align:justify;}
+/* white-space */
+.nowrap{white-space:nowrap;}
+/* position */
+.rel{position:relative;}
+.abs{position:absolute;}
+/* cursor */
+.poi{cursor:pointer;}
+.def{cursor:default;}
 .u-flex{
   display: flex;
 }
@@ -78,10 +92,4 @@ html,body{
 }
 .tip-title{
   margin-bottom: 10px;
-}
-.mt10{
-  margin-top: 10px;
-}
-.mt20{
-  margin-top: 20px;
 }

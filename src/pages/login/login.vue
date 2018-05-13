@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import { auth } from '@/service/api'
   export default {
     data () {
       return {
@@ -45,8 +46,10 @@
       handleSubmit (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$router.push({
-              name:'home'
+            auth(this.formValidate).then(res => {
+              // this.$router.push({
+              //   name:'home'
+              // });
             });
           } else {
             this.$Message.error('失败!');

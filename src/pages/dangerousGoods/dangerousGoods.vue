@@ -53,10 +53,11 @@
       class-name="vertical-center-modal"
       v-model="config.modal"
       :title="config.title"
+      :width="650"
       @on-ok="ok">
-      <Input placeholder="请输入" />
-      <p>Content of dialog</p>
-      <p>Content of dialog</p>
+      <Form>
+
+      </Form>
     </Modal>
   </div>
 </template>
@@ -198,7 +199,7 @@
       add(){
         this.config = {
           modal:true,
-          title:'新增'
+          title:'添加危险货物信息'
         }
       },
       ok(){

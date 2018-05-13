@@ -63,7 +63,7 @@ const mutations = {
 const actions = {
   initMenu( { commit } ,payload) {
     menu().then(res => {
-      commit(INITMENU ,res);
+      commit(INITMENU ,res.data);
       payload.$nextTick(()=> {
         payload.$refs.menu.updateOpened();
         payload.$refs.menu.updateActiveName();

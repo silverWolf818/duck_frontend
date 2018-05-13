@@ -179,7 +179,6 @@ Mock.mock('menu', 'post', {
 
 
 Mock.mock('menus', 'post', {
-  "respDesc": "success",
   "data": [
     {
       "autoId":1,
@@ -281,6 +280,5 @@ Mock.mock('menus', 'post', {
           "menuUrl": "/fail",
           "subMenus":[]
         }]
-    }],
-  "respCode": "0000"
+    }]
 });
