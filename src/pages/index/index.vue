@@ -32,7 +32,7 @@
         <Avator v-bind="getUser"></Avator>
       </Header>
       <Tags v-bind="getTags" @linkTo="linkTo"></Tags>
-      <Content style="overflow-x: hidden; height: 100%;padding: 14px 24px 0">
+      <Content class="layout-content">
         <router-view />
       </Content>
     </Layout>

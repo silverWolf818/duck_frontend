@@ -54,7 +54,7 @@
       v-model="config.modal"
       :title="config.title"
       @on-ok="ok">
-      <p>Content of dialog</p>
+      <Input placeholder="请输入" />
       <p>Content of dialog</p>
       <p>Content of dialog</p>
     </Modal>

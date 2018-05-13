@@ -10,6 +10,11 @@
   border-radius: 3px;
   margin: 15px auto;
 }
+.layout-content{
+  overflow-x: hidden;
+  height: 100%;
+  padding: 14px 24px 0;
+}
 .ivu-layout-sider{
   -webkit-box-shadow: 2px 0 6px rgba(0,21,41,.35);
   box-shadow: 2px 0 6px rgba(0,21,41,.35);
